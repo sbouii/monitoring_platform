@@ -1,0 +1,21 @@
+
+ - name: updating packages
+   apt: update_cache=yes
+ - name: installing pip
+   apt: name=python-pip state=installed
+   become: yes
+
+ - name: installing Docker-py
+   pip:
+     name: docker-py
+ - name: install docker
+   shell: curl -sSL https://get.docker.com/ | sh
+   args:
+      creates: /usr/bin/docker
+ - name: Wait for the Docker server to start
+   action: raw docker version
+   register: docker_version
+   until: docker_version.stdout.find("Client") != -1
+   retries: 30
+   delay: 10
+

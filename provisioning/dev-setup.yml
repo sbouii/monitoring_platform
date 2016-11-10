@@ -1,0 +1,47 @@
+
+- hosts: dev-servers
+  sudo: True
+  tasks:
+  - include: common/main.yml
+  - name: installing git
+    apt: pkg=git-core state=installed 
+  - name: installing fabric
+    apt: pkg=fabric state=installed
+  - name: clone a django framework docker container from github
+    git: 
+     repo: https://github.com/morninj/django-docker.git
+     dest: /home/django-docker 
+     clone: yes  
+     update: yes
+  - name: generate SSH keys
+    shell: ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N "" 
+    args:
+     creates: /root/.ssh/id_rsa
+  
+  - name: copy the config.ini file 
+    copy:
+     src: config.ini
+     dest: /home/django-docker/config.ini.sample
+  - name: create django project docker image 
+    docker_image:
+     name: mariem/django-docker
+     tag: django_project
+     path: /home/django-docker
+     state: build     
+    sudo: yes
+  - name: running django docker container
+    docker:
+     name: django
+     image: mariem/django-docker:django_project
+     state: started 
+     ports:
+      - "80:80"
+     volumes:
+      - /code
+     env:
+        DJANGO_PRODUCTION=false
+
+    sudo: yes  
+    
+   
+

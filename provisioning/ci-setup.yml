@@ -1,0 +1,76 @@
+- hosts: ci-servers
+  sudo: True
+  tasks:
+  - include: common/main.yml
+  - name: installing postgresql container
+    docker:
+     name: postgresql
+     image: sameersbn/postgresql:9.4
+     state: started
+     env:
+       DB_NAME=gitlabhq_production
+       DB_USER=gitlab
+       DB_PASS=password
+     volumes:
+       - /dbdata:/var/lib/postgresql 
+
+  - name: installing redis container
+    docker:
+     name: redis
+     image: sameersbn/redis:latest
+     state: started
+  - name: installing gitlab container
+    docker:
+     name: gitlab
+     image: sameersbn/gitlab:7.10.0
+     state: started
+     ports: 
+      - 10080:80
+     volumes:
+      - /data/gitlab/config:/etc/gitlab \
+      - /data/gitlab/logs:/var/log/gitlab \
+      - /data/gitlab/data:/var/opt/gitlab \
+     links:
+      - redis
+      - postgresql
+  - name: installing jenkins container
+    docker:
+      name: jenkins
+      image: jenkins:2.7.4
+      state: started
+      ports:
+       - 8080:8080
+      expose:
+       - 6379
+      volumes:
+       - jenkins_home:/var/jenkins_home
+      links:
+       - gitlab:gitlab
+
+  - name: installing regsitry container
+    docker:
+     name: registry
+     image: registry:2
+     state: started
+     ports:
+      - 5000:5000
+     links:
+      - jenkins
+
+  - name: installing artifactory container
+    docker:
+     name: artifactory
+     image: jfrog-docker-registry.bintray.io/jfrog/artifactory-pro:4.1.0 
+     state: started
+     ports:
+      - 8081:8081
+     env:
+       ARTIFACTORY_HOME=/var/opt/jfrog/artifactory 
+     volumes:
+      - /data:$ARTIFACTORY_HOME/data
+      - /logs:$ARTIFACTORY_HOME/logs
+      - /backup:$ARTIFACTORY_HOME/backup
+      - /etc:$ARTIFACTORY_HOME/etc 
+     links:
+      - jenkins
+      

@@ -1,0 +1,61 @@
+- hosts: cd-servers
+  sudo: True
+  tasks:
+  - include: common/main.yml
+  - name: installing elasticdata container
+    docker:
+     name: elasticdata
+     image: elasticsearch:1.7.0
+     state: started
+     volumes:
+      - /var/lib/elasticsearch/data
+      - /var/lib/elasticsearch/logs
+      - /tmp/elasticsearch
+     command: chown elasticsearch:elasticsearch /var/lib/elasticsearch/logs /var/lib/elasticsearch/data /tmp/elasticsearch
+
+  - name: installing elasticsearch container
+    docker:
+     name: elasticsearch
+     image: elasticsearch:latest
+     state: started
+     ports:
+      - 9200:9200
+      - 9300:9300
+     volumes_from: 
+      - elasticdata
+
+  - name: installing logstash container
+    docker:
+     name: logstash
+     image: logstash:latest
+     command: logstash -f /etc/logstash/conf.d/logstash.conf
+     state: started
+     ports: 5000:5000
+     volumes:
+      - logstash-conf:/opt/logstash/conf.d
+     links:
+      - elasticsearch
+  
+  - name: installing kibana container
+    docker:
+     name: kibana
+     image: kibana
+     state: started
+     ports: 5601:5601
+     links:
+      - elasticsearch
+
+  - name: installing nginx container
+    docker:
+     image: nginx:1.9.3
+     state: started
+     links:
+      - kibana
+     ports:
+      - "5600:5600"
+     volumes:
+      - proxy-conf:/etc/nginx/conf.d
+     
+     
+  
+
