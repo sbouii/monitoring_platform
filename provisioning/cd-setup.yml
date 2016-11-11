@@ -8,9 +8,9 @@
      image: elasticsearch:1.7.0
      state: started
      volumes:
-      - /var/lib/elasticsearch/data
-      - /var/lib/elasticsearch/logs
-      - /tmp/elasticsearch
+      - /home/vagrant/data:/var/lib/elasticsearch/data
+      - /home/vagrant/logs:/var/lib/elasticsearch/logs
+      - /home/vagrant/elasticsearch:/tmp/elasticsearch
      command: chown elasticsearch:elasticsearch /var/lib/elasticsearch/logs /var/lib/elasticsearch/data /tmp/elasticsearch
 
   - name: installing elasticsearch container
@@ -23,6 +23,8 @@
       - 9300:9300
      volumes_from: 
       - elasticdata
+     volumes:
+      - /home/vagrant/elasticsearch:/etc/logstash/conf.d/logstash.conf
 
   - name: installing logstash container
     docker:
@@ -32,7 +34,7 @@
      state: started
      ports: 5000:5000
      volumes:
-      - logstash-conf:/opt/logstash/conf.d
+      - /home/vagrant/logstash-conf:/opt/logstash/conf.d
      links:
       - elasticsearch
   
@@ -44,7 +46,10 @@
      ports: 5601:5601
      links:
       - elasticsearch
-
+     volumes:
+      - /home/vagrant/config:/opt/kibana/config
+     env:
+        ELASTICSEARCH_URL=http://elasticsearch:9200
   - name: installing nginx container
     docker:
      image: nginx:1.9.3
@@ -54,7 +59,7 @@
      ports:
       - "5600:5600"
      volumes:
-      - proxy-conf:/etc/nginx/conf.d
+      - /home/vagrant/proxy-conf:/etc/nginx/conf.d
      
      
   
