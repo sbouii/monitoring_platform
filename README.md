@@ -28,4 +28,4 @@ to use vagrantafile you have to do the following :
 5. Run the following command to install the necessary Ansible roles for this profile: `$ ansible-galaxy install -r requirements.yml`
 
 then you can simply setup the three environments of the pipeline by typing `vagrant up` or setup a specific environment  
-for example for the continuos integration enviroment type `vagrant up `
+for example for the continuos integration enviroment type `vagrant up CI-VM `
