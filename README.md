@@ -18,8 +18,7 @@ for more informations about how to configure Grafana with prometheus https://log
 - **Virtualbox**
 ### Necessary Ansible roles
 
-All the necessary ansible roles that are used in the servers configuration are indicated in the requirements.yml file
-
+All the necessary ansible roles that are used in the servers configuration are indicated in the requirements.yml file.
 I have developed the ansible roles responsible for the monitoring aspect of the production server configuration precisely
 **[Grafana role](https://github.com/sbouii/Grafana_ansible_role)** and  **[Prometheus role](https://github.com/sbouii/Prometheus_ansible_role)** with testing the infrastructure using the testing tool **[KitchenCi](http://kitchen.ci/)** just to verify the infrastructure is configured as expected .
 
