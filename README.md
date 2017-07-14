@@ -42,6 +42,7 @@ then you can simply setup the two environments by typing `vagrant up` or setup a
 for example for the continuos integration enviroment type `vagrant up CI-VM `.
 
 If you don't prefer to install jenkins as an isolated docker container you can simply run an ansible role for installaing jenkins at the continuous integration server.
+
 you have to add the ansible jenkins role to the requirements.yml file as the following
 ```yaml
 ---
@@ -52,7 +53,7 @@ you have to add the ansible jenkins role to the requirements.yml file as the fol
 
 ```
 
-you simply need to replace the content of provisioning/ci-setup.yml file with the following content
+you need to replace the content of provisioning/ci-setup.yml file with the following content
 
 ```yaml
 ---
@@ -65,3 +66,4 @@ you simply need to replace the content of provisioning/ci-setup.yml file with th
      - geerlinggy.git
      - sbouii.jenkins    
 ```
+Then start again from the fifth step.
