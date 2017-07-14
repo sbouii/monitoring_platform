@@ -39,9 +39,21 @@ to use vagrantafile you have to do the following :
 5. Run the following command to install the necessary Ansible roles for this profile: `$ ansible-galaxy install -r requirements.yml`
 
 then you can simply setup the two environments by typing `vagrant up` or setup a specific environment  
-for example for the continuos integration enviroment type `vagrant up CI-VM `
-if you don't prefer to install jenkins as an isolated docker container you can simply run an ansible role for installaing jenkins at the continuous integration server.
-you simply need to replace the provisioning/ci-setup.yml file with the following content 
+for example for the continuos integration enviroment type `vagrant up CI-VM `.
+
+If you don't prefer to install jenkins as an isolated docker container you can simply run an ansible role for installaing jenkins at the continuous integration server.
+you have to add the ansible jenkins role to the requirements.yml file as the following
+```yaml
+---
+- geerlinggy.java
+- lino.tomcat7
+- geerlinggy.git
+- sbouii.jenkins
+
+```
+
+you simply need to replace the content of provisioning/ci-setup.yml file with the following content
+
 ```yaml
 ---
 - hosts: ci-servers
