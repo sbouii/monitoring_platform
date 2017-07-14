@@ -2,7 +2,10 @@
   sudo: True
   tasks:
   - include: common/main.yml
-  - name:
+  - roles:
+    - geerlinggy.java
+    - lino.tomcat7
+    - geerlinggy.git
      
   - name: installing jenkins container
     docker:
