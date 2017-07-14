@@ -1,8 +1,0 @@
-- hosts: dev-setup
-  sudo: True
-  gather_facts: no
-  roles:
-    - geerlinggy.java
-    - lino.tomcat7
-    - geerlinggy.git
-

@@ -1,7 +1,7 @@
 - hosts: ci-servers
   sudo: True
   tasks:
-  - include: common/main.yml
+  - include: utilities/main.yml
   - roles:
     - geerlinggy.java
     - lino.tomcat7

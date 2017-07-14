@@ -1,0 +1,6 @@
+- hosts: Prod-servers
+  sudo: True
+  tasks:
+  - roles:
+    - sbouii.grafana
+    - sbouii.prometheus 
