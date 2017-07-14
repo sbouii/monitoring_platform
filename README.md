@@ -2,6 +2,9 @@
 ## Description
 
 Spin up a continuous integration server and a production server using **[Vagrant](https://www.vagrantup.com/)** , **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and **[Ansible](https://www.ansible.com/)**  for the provisioning of the infrastructure.
+the production sever is equiped with a monitoring solution  **[Grafana](https://grafana.com/)** + **[Prometheus](https://prometheus.io/)** for monitoring the production infrastructure and the application running inside it.
+
+for more informations about how to configure Grafana with prometheus https://logz.io/blog/prometheus-monitoring/
 
 ## Requirements
 ### Software requirements
