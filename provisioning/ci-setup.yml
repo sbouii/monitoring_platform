@@ -2,41 +2,7 @@
   sudo: True
   tasks:
   - include: common/main.yml
-  - name: installing postgresql container
-    docker:
-     name: postgresql
-     image: sameersbn/postgresql:9.4
-     state: started
-     env:
-       DB_NAME=gitlabhq_production
-       DB_USER=gitlab
-       DB_PASS=password
-     
-  - name: installing redis container
-    docker:
-     name: redis
-     image: sameersbn/redis:latest
-     state: started
-     
-        
-  - name: installing gitlab container
-    docker:
-     name: gitlab
-     image: sameersbn/gitlab:7.9.1
-     state: started
-     ports: 
-      - 10080:80
-      - 10022:22
-     env:
-      - GITLAB_PORT=10080
-      - GITLAB_SSH_PORT=10022
-     volumes:
-      - /data/gitlab/config:/etc/gitlab \
-      - /data/gitlab/logs:/var/log/gitlab \
-      - /data/gitlab/data:/var/opt/gitlab \
-     links:
-      - redisio
-      - postgresql
+  - name:
      
   - name: installing jenkins container
     docker:
@@ -49,9 +15,7 @@
        - 6379
       volumes:
        - jenkins_home:/var/jenkins_home
-      links:
-       - gitlab
-
+       
   - name: installing regsitry container
     docker:
      name: registry
@@ -78,4 +42,3 @@
       - /etc:$ARTIFACTORY_HOME/etc 
      links:
       - jenkins
-      
