@@ -1,8 +1,8 @@
-# prototyping_devops_pipeline
+# Prototyping_devops_pipeline
 ## Description
 
 Spin up a continuous integration server and a production server using **[Vagrant](https://www.vagrantup.com/)** , **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and **[Ansible](https://www.ansible.com/)**  for the provisioning of the infrastructure.
-the production sever is equiped with a monitoring solution  **[Grafana](https://grafana.com/)** + **[Prometheus](https://prometheus.io/)** for monitoring the production infrastructure and the application running inside it.
+the production sever is equiped with a monitoring solution  **[Grafana](https://grafana.com/)** + **[Prometheus](https://prometheus.io/)** for monitoring the production infrastructure and the running application deployed on it.
 
 for more informations about how to configure Grafana with prometheus https://logz.io/blog/prometheus-monitoring/
 
@@ -16,6 +16,11 @@ for more informations about how to configure Grafana with prometheus https://log
 - **[Vagrant](https://www.vagrantup.com/) 1.7** or higher 
 
 - **Virtualbox**
+### Necessary Ansible roles
+
+All the necessary ansible roles that are used in the servers configuration are indicated in the requirements.yml file.
+I have developed the ansible roles responsible for the monitoring aspect of the production server configuration precisely
+**[Grafana role](https://github.com/sbouii/Grafana_ansible_role)** and  **[Prometheus role](https://github.com/sbouii/Prometheus_ansible_role)** with testing the infrastructure using the testing tool **[KitchenCi](http://kitchen.ci/)** just to verify the infrastructure is configured as expected .
 
 ## Supported systems
 
@@ -33,5 +38,5 @@ to use vagrantafile you have to do the following :
 4. Open a shell prompt (Terminal app on a Mac) and cd into the folder containing the `Vagrantfile`
 5. Run the following command to install the necessary Ansible roles for this profile: `$ ansible-galaxy install -r requirements.yml`
 
-then you can simply setup the three environments of the pipeline by typing `vagrant up` or setup a specific environment  
+then you can simply setup the two environments by typing `vagrant up` or setup a specific environment  
 for example for the continuos integration enviroment type `vagrant up CI-VM `
