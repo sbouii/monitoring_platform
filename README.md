@@ -46,10 +46,10 @@ If you don't prefer to install jenkins as an isolated docker container you can s
 you have to add the ansible jenkins role to the requirements.yml file as the following
 ```yaml
 ---
-- geerlinggy.java
-- lino.tomcat7
-- geerlinggy.git
-- sbouii.jenkins
+geerlinggy.java
+lino.tomcat7
+geerlinggy.git
+sbouii.jenkins
 
 ```
 
