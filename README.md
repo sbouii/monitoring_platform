@@ -1,7 +1,7 @@
 # prototyping_devops_pipeline
 ## Description
 
-it's a prototyping design for continious delivery pipeline with dev, test and prod environement using **[Vagrant](https://www.vagrantup.com/)** , **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and **[Ansible](https://www.ansible.com/)**  for the provisioning of the infrastructure.
+Spin up a continuous integration server and a production server using **[Vagrant](https://www.vagrantup.com/)** , **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and **[Ansible](https://www.ansible.com/)**  for the provisioning of the infrastructure.
 
 ## Requirements
 ### Software requirements
