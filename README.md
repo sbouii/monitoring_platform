@@ -49,6 +49,8 @@ you have to add the ansible jenkins role to the requirements.yml file as the fol
 geerlinggy.java
 lino.tomcat7
 geerlinggy.git
+sbouii.grafana_ansible
+sbouii.prometheus_ansible
 sbouii.jenkins
 
 ```
