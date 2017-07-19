@@ -1,10 +1,10 @@
 # Prototyping_devops_pipeline
 ## Description
 
-Spin up a continuous integration server and a production server using **[Vagrant](https://www.vagrantup.com/)** , **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and **[Ansible](https://www.ansible.com/)**  for the provisioning of the infrastructure.
+Spin up a continuous integration server and a production server using **[Vagrant](https://www.vagrantup.com/)** , **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and Ansible for the provisioning of the infrastructure.
 the production sever is equiped with a monitoring solution  **[Grafana](https://grafana.com/)** + **[Prometheus](https://prometheus.io/)** for monitoring the production infrastructure and the running application deployed on it.
 
-for more informations about how to configure Grafana with prometheus https://logz.io/blog/prometheus-monitoring/
+For more informations about how to configure Grafana with prometheus https://logz.io/blog/prometheus-monitoring/
 
 ## Requirements
 ### Software requirements
@@ -39,4 +39,31 @@ to use vagrantafile you have to do the following :
 5. Run the following command to install the necessary Ansible roles for this profile: `$ ansible-galaxy install -r requirements.yml`
 
 then you can simply setup the two environments by typing `vagrant up` or setup a specific environment  
-for example for the continuos integration enviroment type `vagrant up CI-VM `
+for example for the continuos integration enviroment type `vagrant up CI-VM `.
+
+If you don't prefer to install jenkins as an isolated docker container you can simply run an ansible role **[Jenkins role](https://github.com/sbouii/Jenkins_ansible_role)** for installaing jenkins at the continuous integration server.
+
+you have to add the ansible jenkins role to the requirements.yml file as the following
+```yaml
+---
+geerlinggy.java
+lino.tomcat7
+geerlinggy.git
+sbouii.jenkins
+
+```
+
+you need to replace the content of provisioning/ci-setup.yml file with the following content
+
+```yaml
+---
+- hosts: ci-servers
+  sudo: True
+  tasks:
+   - roles:
+     - geerlinggy.java
+     - lino.tomcat7
+     - geerlinggy.git
+     - sbouii.jenkins    
+```
+Then start again from the fifth step.
