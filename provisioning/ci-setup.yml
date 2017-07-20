@@ -3,9 +3,9 @@
   tasks:
   - include: utilities/main.yml
   - roles:
-    - geerlinggy.java
+    - geerlingguy.java
     - lino.tomcat7
-    - geerlinggy.git
+    - geerlingguy.git
      
   - name: installing jenkins container
     docker:
