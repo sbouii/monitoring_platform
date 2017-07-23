@@ -46,9 +46,7 @@ If you don't prefer to install jenkins as an isolated docker container you can s
 you have to add the ansible jenkins role to the requirements.yml file as the following
 ```yaml
 ---
-geerlingguy.java
-lino.tomcat7
-geerlingguy.git
+abessifi.java
 sbouii.grafana_ansible
 sbouii.prometheus_ansible
 sbouii.jenkins_ansible
@@ -63,9 +61,7 @@ you need to replace the content of provisioning/ci-setup.yml file with the follo
   sudo: True
   tasks:
    - roles:
-     - geerlingguy.java
-     - lino.tomcat7
-     - geerlingguy.git
+     - abessifi.java
      - sbouii.jenkins_ansible   
 ```
 Then start again from the fifth step.
