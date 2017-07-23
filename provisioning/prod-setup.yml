@@ -1,5 +1,5 @@
 - hosts: Prod-servers
-  sudo: True
+  sudo: yes
   tasks:
   - roles:
     - sbouii.grafana_ansible
