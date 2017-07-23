@@ -3,7 +3,7 @@
   tasks:
   - include: utilities/main.yml
   - roles:
-    - abessifi.java 
+    - abessifi.ansible-java 
      
   - name: installing jenkins container
     docker:
