@@ -3,8 +3,11 @@
   tasks:
   - include: utilities/main.yml
   - roles:
-    - abessifi.ansible-java 
-     
+    - abessifi.ansible-java  
+  - name: Install git
+    apt:
+     name: git
+     update_cache: yes   
   - name: installing jenkins container
     docker:
       name: jenkins
