@@ -2,5 +2,5 @@
   sudo: True
   tasks:
   - roles:
-    - sbouii.grafana
-    - sbouii.prometheus 
+    - sbouii.grafana_ansible
+    - sbouii.prometheus_ansible
