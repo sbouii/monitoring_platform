@@ -28,26 +28,26 @@ Vagrant.configure(2) do |config|
    end
    cfg.vm.provision :ansible do |ansible|
     ansible.playbook = 'provisioning/ci-setup.yml'
-    ansible.groups = {
-    "ci-servers" => ["CI-VM"],
-    }
+    ansible.inventory_path = 'vagrant-inventory.ini'
+    ansible.limit = 'CI-VM'
+    ansible.verbose = 'v'
    end
   end
 
-  config.vm.define "Prod-VM" do |cfg|
-   cfg.vm.hostname = "Prod-VM"
+  config.vm.define "PROD-VM"do |cfg|
+   cfg.vm.hostname = "PROD-VM"
    cfg.vm.network "private_network", ip: "192.168.33.42"
    cfg.vm.provider "virtualbox" do |vb|
     vb.gui = true
-    vb.name = 'Prod-VM'
+    vb.name = 'PROD-VM'
     vb.memory = 1230
     
    end
    cfg.vm.provision :ansible do |ansible|
      ansible.playbook = 'provisioning/cd-setup.yml'
-     ansible.groups = {
-     "Prod-servers" => ["Prod-VM"],
-     }
+     ansible.inventory_path = 'vagrant-inventory.ini'
+     ansible.limit = 'PROD-VM'
+     ansible.verbose = 'v'
    end
   end
   
