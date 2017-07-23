@@ -1,5 +1,5 @@
 - hosts: ci-servers
-  sudo: True
+  sudo: yes
   tasks:
   - include: utilities/main.yml
   - roles:
