@@ -1,22 +1,38 @@
 
- - name: updating packages
-   apt: update_cache=yes
  - name: installing pip
-   apt: name=python-pip state=installed
-   become: yes
+   apt: 
+    name: python-pip
+    state: installed
 
  - name: installing Docker-py
    pip:
      name: docker-py
- - name: install docker
-   get_url:
-    url=https://get.docker.com/
-    dest=/usr/bin/docker
-    mode=0440
- - name: Wait for the Docker server to start
-   action: raw docker version
-   register: docker_version
-   until: docker_version.stdout.find("Client") != -1
-   retries: 30
-   delay: 10
+     version: 1.3.1
 
+ - name: Install dependencies
+   apt:
+     name: "{{ item }}"
+     state: installed
+   with_items:
+      - apt-transport-https
+      - ca-certificates
+
+ - name: ADD GPG key
+   apt_key:
+     keyserver: "hkp://p80.pool.sks-keyservers.net:80"
+     id: "58118E89F3A912897C070ADBF76221572C52609D"
+     
+ - name: Add repository
+   apt_repository:
+    repo: "deb https://apt.dockerproject.org/repo ubuntu-xenial main"
+    state: present
+
+ - name: Install Docker
+   apt:
+    name: docker-engine
+    state: installed
+    update_cache: yes 
+ - name: Run docker 
+   service:
+    name: docker
+    state: started

@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
   
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   # Disable automatique box update
   config.vm.box_check_update = false
@@ -11,11 +11,6 @@ Vagrant.configure(2) do |config|
   # Disable the default /vagrant share
   config.vm.synced_folder ".", "/vagrant" , disabled: true
   
-  # Update /etc/hosts in all VMs
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
-  config.hostmanager.include_offline = true
-
   config.vm.define "CI-VM" do |cfg|
    cfg.vm.hostname = "CI-VM"
    cfg.vm.network "private_network", ip: "192.168.33.40"
