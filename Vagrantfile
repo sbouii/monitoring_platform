@@ -10,6 +10,11 @@ Vagrant.configure(2) do |config|
 
   # Disable the default /vagrant share
   config.vm.synced_folder ".", "/vagrant" , disabled: true
+  
+  # Update /etc/hosts in all VMs
+	config.hostmanager.enabled = true
+	config.hostmanager.manage_host = true
+  config.hostmanager.include_offline = true
 
   config.vm.define "CI-VM" do |cfg|
    cfg.vm.hostname = "CI-VM"
