@@ -40,9 +40,9 @@
      env:
        ARTIFACTORY_HOME=/var/opt/jfrog/artifactory 
      volumes:
-      - data:$ARTIFACTORY_HOME/data
-      - logs:$ARTIFACTORY_HOME/logs
-      - backup:$ARTIFACTORY_HOME/backup
-      - etc:$ARTIFACTORY_HOME/etc 
+      - $ARTIFACTORY_HOME/data:$ARTIFACTORY_HOME/data
+      - $ARTIFACTORY_HOME/logs:$ARTIFACTORY_HOME/logs
+      - $ARTIFACTORY_HOME/backup:$ARTIFACTORY_HOME/backup
+      - $ARTIFACTORY_HOME/etc:$ARTIFACTORY_HOME/etc 
      links:
       - jenkins
