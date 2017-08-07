@@ -3,7 +3,7 @@
   tasks:
   - include: utilities/main.yml
   - roles:
-    - abessifi.ansible-java  
+    - geerlingguy.java
   - name: Install git
     apt:
      name: git
