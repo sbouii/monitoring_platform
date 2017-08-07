@@ -1,9 +1,8 @@
 - hosts: ci-servers
   sudo: yes
-  tasks:
-  - include: utilities/main.yml
-  - roles:
+  roles:
     - geerlingguy.java
+  - include: utilities/main.yml
   - name: Install git
     apt:
      name: git
