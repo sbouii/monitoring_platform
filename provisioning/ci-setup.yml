@@ -1,4 +1,4 @@
-- hosts: ci-servers
+- hosts: CI-VM
   sudo: yes
   roles:
     - geerlingguy.java
