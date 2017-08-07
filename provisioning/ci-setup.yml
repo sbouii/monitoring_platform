@@ -2,6 +2,7 @@
   sudo: yes
   roles:
     - geerlingguy.java
+  tasks:
   - include: utilities/main.yml
   - name: Install git
     apt:
