@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
   
   config.vm.box = "bento/ubuntu-16.04"
 
-  # Disable automatique box update
+  # Disable automatic box update
   config.vm.box_check_update = false
 
   # Disable the default /vagrant share
