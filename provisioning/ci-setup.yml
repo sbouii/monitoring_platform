@@ -28,21 +28,4 @@
      ports:
       - 5000:5000
      links:
-      - jenkins
-
-  - name: installing artifactory container
-    docker:
-     name: artifactory
-     image: jfrog-docker-registry.bintray.io/jfrog/artifactory-pro:4.1.0 
-     state: started
-     ports:
-      - 8081:8081
-     env:
-        ARTIFACTORY_HOME: /var/opt/jfrog/artifactory 
-     volumes:
-      - data_artifactory:$ARTIFACTORY_HOME/data
-      - logs_artifactory:$ARTIFACTORY_HOME/logs
-      - backup_artifactory:$ARTIFACTORY_HOME/backup
-      - etc_artifactory:$ARTIFACTORY_HOME/etc 
-     links:
-      - jenkins
+      - jenkins  
