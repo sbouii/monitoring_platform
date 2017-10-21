@@ -25,6 +25,9 @@ Vagrant.configure(2) do |config|
     ansible.inventory_path = 'vagrant-inventory.ini'
     ansible.limit = 'CI-VM'
     ansible.verbose = 'v'
+    ansible.extra_vars = {
+        ansible_python_interpreter: "/usr/bin/python3.5",
+    }
    end
   end
 
@@ -42,6 +45,9 @@ Vagrant.configure(2) do |config|
      ansible.inventory_path = 'vagrant-inventory.ini'
      ansible.limit = 'PROD-VM'
      ansible.verbose = 'v'
+     ansible.extra_vars = {
+        ansible_python_interpreter: "/usr/bin/python3.5",
+    }
    end
   end
   
