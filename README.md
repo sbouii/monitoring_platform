@@ -9,7 +9,7 @@ For more informations about how to configure Grafana with prometheus https://log
 ## Requirements
 ### Software requirements
 
-- **Python 2.7** or higher
+- **Python 3.5**
 
 - **Ansible 2.0** or higher (can be easily installed via pip. E.g: sudo pip install ansible==2.0.0.2)
 
