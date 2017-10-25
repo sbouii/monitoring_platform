@@ -1,6 +1,6 @@
-- hosts: Prod-servers
+- hosts: PROD-VM
   sudo: yes
   tasks:
   - roles:
-    - sbouii.grafana_ansible
-    - sbouii.prometheus_ansible
+    - sbouii.grafana
+    - sbouii.prometheus
