@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
     
    end
    cfg.vm.provision :ansible do |ansible|
-     ansible.playbook = 'provisioning/cd-setup.yml'
+     ansible.playbook = 'provisioning/prod-setup.yml'
      ansible.inventory_path = 'vagrant-inventory.ini'
      ansible.limit = 'PROD-VM'
      ansible.verbose = 'v'
