@@ -42,7 +42,7 @@ to use vagrantafile you have to do the following :
 then you can simply setup the two environments by typing `vagrant up` or setup a specific environment  
 for example for the continuos integration enviroment type `vagrant up CI-VM `.
 
-If you don't prefer to install jenkins as an isolated docker container you can simply run an ansible role **[Jenkins role](https://github.com/sbouii/Jenkins_ansible_role)** for installaing jenkins at the continuous integration server.
+If you don't prefer to install jenkins as an isolated docker container, you want to install it directly on your host. you can simply run an ansible role **[Jenkins role](https://github.com/geerlingguy/ansible-role-jenkins)** for installaing jenkins at the continuous integration server.
 
 you have to add the ansible jenkins role to the requirements.yml file as the following
 ```yaml
