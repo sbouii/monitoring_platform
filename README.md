@@ -62,8 +62,8 @@ you need to replace the content of provisioning/ci-setup.yml file with the follo
   vars:
     jenkins_hostname: localhost
   roles: 
-     - role:  geerlingguy.java
-     - role: geerlingguy.jenkins
+     - geerlingguy.java
+     - geerlingguy.jenkins
        become: true
        
 ```
