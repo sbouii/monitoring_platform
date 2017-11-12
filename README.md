@@ -58,7 +58,7 @@ you need to replace the content of provisioning/ci-setup.yml file with the follo
 
 ```yaml
 ---
-- hosts: ci-servers
+- hosts: CI-VM
   vars:
     jenkins_hostname: localhost
   roles: 
