@@ -44,7 +44,7 @@ for example for the continuos integration enviroment type `vagrant up CI-VM `.
 
 If you don't prefer to install jenkins as an isolated docker container, you want to install it directly on your host. you can simply run an ansible role **[Jenkins role](https://github.com/geerlingguy/ansible-role-jenkins)** for installaing jenkins at the continuous integration server.
 
-you have to add the ansible jenkins role to the requirements.yml file as the following ( the geerlingguy.java here is a requirement for the jenkins role)
+you have to add the ansible jenkins role to the requirements.yml file as the following ( the geerlingguy.java here is a requirement for the jenkins install step)
 ```yaml
 ---
 geerlingguy.java
