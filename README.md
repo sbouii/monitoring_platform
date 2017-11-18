@@ -11,11 +11,11 @@ For more informations about how to configure Grafana with prometheus https://log
 
 - **Python 3.5**
 
-- **Ansible 2.0** or higher (can be easily installed via pip. E.g: sudo pip install ansible==2.0.0.2)
+- **Ansible 2.2** or higher
 
 - **[Vagrant](https://www.vagrantup.com/) 1.7** or higher 
 
-- **Virtualbox**
+- **Virtualbox 5.1**
 ### Necessary Ansible roles
 
 All the necessary ansible roles that are used in the servers configuration are indicated in the requirements.yml file.
