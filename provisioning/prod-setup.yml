@@ -1,6 +1,22 @@
 - hosts: PROD-VM
   sudo: yes
   tasks:
+
+  - name: create cadvisor directory
+    file:
+     path: /Cadvisor
+     state: directory
+     mode: 755
+
+  - name: install cadvisor
+    unarchive:
+     src: https://github.com/google/cadvisor/releases/download/v0.20.5/cadvisor
+     dest: /Cadvisor
+     copy: no
+   
+  - name: run cadvisor
+    shell: ./cadvisor
+
   - roles:
     - sbouii.grafana
     - sbouii.prometheus
