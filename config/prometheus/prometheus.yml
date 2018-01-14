@@ -10,9 +10,9 @@ global:
 
   # Load and evaluate rules in this file every 'evaluation_interval' seconds
   rule_files:
-   - "targets.rules"
-   - "host.rules"
-   - "containers.rules"
+   - "/Prometheus/targets.rules"
+   - "/Prometheus/host.rules"
+   - "/Prometheus/containers.rules"
 # scrabing configuration for one endpoint per node
 
 scrape_configs:

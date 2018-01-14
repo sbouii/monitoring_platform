@@ -2,6 +2,33 @@
   sudo: yes
   tasks:
 
+  - roles:
+     - sbouii.grafana
+     - sbouii.prometheus
+
+  - name: overwrite prometheus config
+    copy:
+     src: ../config/prometheus/ {{ item }} 
+     dest: /Prometheus/ {{ item }}
+    with_items:
+     - prometheus.yml
+     - alert.rules
+     - alertmanager_config.yml
+
+  - name: restart alertmanager service
+    systemd:
+     name: alertmanager.service
+     state: started
+     daemon_reload: yes
+     enabled: yes
+
+  - name: restart prometheus service
+    systemd:
+     name: prometheus.service
+     state: started
+     daemon_reload: yes
+     enabled: yes
+
   - name: create cadvisor directory
     file:
      path: /Cadvisor
@@ -15,8 +42,4 @@
      copy: no
    
   - name: run cadvisor
-    shell: ./cadvisor
-
-  - roles:
-    - sbouii.grafana
-    - sbouii.prometheus
+    shell: ./cadvisor 
