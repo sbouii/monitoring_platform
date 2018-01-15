@@ -6,6 +6,11 @@ the sever is equiped with a monitoring solution  **[Grafana](https://grafana.com
 
 For more informations about how to configure Grafana with prometheus https://logz.io/blog/prometheus-monitoring/
 
+### Workflow
+
+![image](https://linoxide.com/wp-content/uploads/2016/12/PromArch.png)
+
+
 ## Requirements
 ### Software requirements
 
