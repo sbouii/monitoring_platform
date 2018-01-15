@@ -2,9 +2,9 @@
 ## Description
 
 Spin up a production server using **[Vagrant](https://www.vagrantup.com/)** and **[Docker](https://www.docker.com/what-docker/)** for the automation of setting up the infrastructure and Ansible for the provisioning of the infrastructure.
-the sever is equiped with a monitoring solution  **[Grafana](https://grafana.com/)** + **[Prometheus](https://prometheus.io/)** for monitoring the production infrastructure and the running application deployed on it.
+the sever is equiped with a monitoring solution based on **[Grafana](https://grafana.com/)** + **[Prometheus](https://prometheus.io/)** +  **[Cadvisor](https://github.com/google/cadvisor)** for monitoring the production infrastructure and the running containers deployed on it.
 
-For more informations about how to configure Grafana with prometheus https://logz.io/blog/prometheus-monitoring/
+For more informations about how to create Grafana Dashboards with prometheus and cadvisor https://logz.io/blog/prometheus-monitoring/
 
 ### Workflow
 
@@ -28,8 +28,7 @@ I have developed the ansible roles responsible for the required monitoring goals
 
 ## Supported systems
 
-- centos
-- redhat
+- centos 7
 
 ## Usage 
 
