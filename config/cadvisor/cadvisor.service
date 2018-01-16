@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/Cadvisor/cadvisor-0.25.0 --port 8080
+Restart=always
+
+[Install]
+WantedBy=default.target
+
