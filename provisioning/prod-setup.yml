@@ -1,15 +1,14 @@
 - hosts: PROD-VM
   sudo: yes
+  roles:
+   - sbouii.grafana
+   - sbouii.prometheus
   tasks:
-
-  - roles:
-     - sbouii.grafana
-     - sbouii.prometheus
 
   - name: overwrite prometheus config
     copy:
-     src: ../config/prometheus/ {{ item }} 
-     dest: /Prometheus/ {{ item }}
+      src: ../config/prometheus/{{ item }} 
+      dest: /Prometheus/{{ item }}
     with_items:
      - prometheus.yml
      - alert.rules
@@ -18,14 +17,14 @@
   - name: restart alertmanager service
     systemd:
      name: alertmanager.service
-     state: started
+     state: restarted
      daemon_reload: yes
      enabled: yes
 
   - name: restart prometheus service
     systemd:
      name: prometheus.service
-     state: started
+     state: restarted
      daemon_reload: yes
      enabled: yes
 
@@ -33,14 +32,15 @@
     file:
      path: /Cadvisor
      state: directory
-     mode: 755
 
   - name: install cadvisor
-    unarchive:
-     src: https://github.com/google/cadvisor/releases/download/v0.20.5/cadvisor
-     dest: /Cadvisor
-     copy: no
+    get_url:
+     url:  https://github.com/manics/cadvisor/releases/download/v0.25.0-manics1/cadvisor
+     checksum: sha256:a3a11c85024a295c14ab3a066420475d66203c54fe40a852dac8f3a10cb43161
+     dest: /Cadvisor/cadvisor-0.25.0
+     force: no
    
+<<<<<<< HEAD
   - name: run cadvisor
     shell: ./cadvisor
 
@@ -54,3 +54,17 @@
       - 
      
  
+=======
+  - name: add cadvisor init service 
+    copy:
+     src: ../config/cadvisor/cadvisor.service
+     dest: /etc/systemd/system/cadvisor.service
+
+  - name: restart cadvisor service
+    systemd:
+     name: cadvisor.service
+     state: restarted
+     daemon_reload: yes
+     enabled: yes
+  
+>>>>>>> 226ccbc1e0f7c8f4daa30fd2d895ba28ff7c25fb
