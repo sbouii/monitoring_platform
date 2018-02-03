@@ -55,8 +55,9 @@
   - name: set up postgres docker containers
     docker:
      name: postgres-container
-     image:
+     image: postgres
      state: started
      count: 2
      expose:
+      - 5432
       
