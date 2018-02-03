@@ -42,4 +42,15 @@
      copy: no
    
   - name: run cadvisor
-    shell: ./cadvisor 
+    shell: ./cadvisor
+
+  - name: set up docker containers
+    docker:
+     name: postgres-container
+     image: 
+     state: started
+     count: 2
+     expose:
+      - 
+     
+ 
