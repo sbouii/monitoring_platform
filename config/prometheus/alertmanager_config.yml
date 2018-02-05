@@ -11,17 +11,15 @@ global:
 templates:
  - 
 route:
-    receiver: 'slack'
+# default receiver
+    receiver: 'email'
     routes:
-    - receiver: 'email'
-    - receiver: 'hipchat'
+    - receiver: 'slack'
+#To DO hipchat config
+#    - receiver: 'hipchat'
 
 receivers:
-   - name: 'slack'
-     slack_configs:
-      - send_resolved: true
       
-
    - name: 'mail'
      email_configs:
       - send_resolved: true
@@ -34,5 +32,8 @@ receivers:
         auth_identity: default global 
         require_tls: default global 
         html: default template
+   - name: 'slack'
+     slack_configs:
+      - send_resolved: true
 
                 
