@@ -1,0 +1,6 @@
+ALERT service_down
+  IF up == 0
+  LABELS {
+    severity = "major",
+    value = "{{$value}}",
+}
