@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 route:
   receiver: 'slack-notifications'
   group_by: [host, containers]
@@ -8,3 +9,6 @@ receivers:
   - channel: '#general'
     text: "{{ AlertDescription }}" // defined in the alert file
     api_url: 'https://hooks.slack.com/services/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'               
+=======
+
+>>>>>>> 65c9a63e58750475e936c5428db27bb49c457327
