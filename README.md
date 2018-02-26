@@ -29,6 +29,7 @@ I have developed the ansible roles responsible for the required monitoring goals
 ## Supported systems
 
 - centos 7
+- ubuntu 16.04
 
 ## Usage 
 
