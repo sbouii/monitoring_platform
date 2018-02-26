@@ -1,8 +1,19 @@
 - hosts: PROD-VM
   sudo: yes
-  roles:
-   - sbouii.grafana
-   - sbouii.prometheus
+  pre_tasks:
+  - name: download grafana role
+    git:
+     repo: 'https://github.com/sbouii/grafana-ansible.git'
+     dest: /etc/ansible/roles
+     
+  - name: download prometheus role
+    git:
+     repo: 'https://github.com/sbouii/prometheus-ansible.git'
+     dest: /etc/ansible/roles
+    
+#  roles:
+#   - sbouii.grafana
+#   - sbouii.prometheus
   tasks:
 
   - name: overwrite prometheus config
