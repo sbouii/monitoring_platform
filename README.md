@@ -6,7 +6,7 @@ the sever is equiped with a monitoring solution based on **[Grafana](https://gra
 
 For more informations about how to create Grafana Dashboards with prometheus and cadvisor https://logz.io/blog/prometheus-monitoring/
 
-### Workflow
+### Workflow ( we will stick only to the slack notification)
 
 ![image](https://linoxide.com/wp-content/uploads/2016/12/PromArch.png)
 
@@ -24,7 +24,7 @@ For more informations about how to create Grafana Dashboards with prometheus and
 ### Necessary Ansible roles
 
 All the necessary ansible roles that are used for the server configuration are indicated in the requirements.yml file.
-I have developed the ansible roles responsible for the required monitoring goals, precisely **[Grafana role](https://github.com/sbouii/Grafana-ansible)** and  **[Prometheus role](https://github.com/sbouii/Prometheus-ansible)** with testing the infrastructure using the testing tool **[KitchenCi](http://kitchen.ci/)** just to verify the infrastructure is configured as expected or not.
+I have developed the ansible roles responsible for the required monitoring goals, precisely **[Grafana role](https://github.com/sbouii/Grafana-ansible)** and  **[Prometheus role](https://github.com/sbouii/Prometheus-ansible)** .
 
 ## Supported systems
 
