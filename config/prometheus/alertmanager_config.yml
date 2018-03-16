@@ -6,5 +6,5 @@ receivers:
 - name: 'slack-notifications'
   slack_configs:
   - channel: '#general'
-    text:  "{{ .Annotations.description }}"
+   ## TO DO text:  "{{  }}"
     api_url: 'https://hooks.slack.com/services/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'               
