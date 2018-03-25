@@ -44,4 +44,4 @@ to use vagrantafile you have to do the following :
 5. Run the following command to install the necessary Ansible roles for this profile: `$ ansible-galaxy install -r requirements.yml`
 
 then you can simply setup the server by typing `vagrant up`.
-![image](Screenshot from 2018-03-25 17-04-33.png) 
+![Snapshot](https://snapshot.raintank.io/dashboard/snapshot/5ehLoYGgNfEuI8f0FW0JoGm9cKlWNQ3h) 
