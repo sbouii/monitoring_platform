@@ -44,4 +44,3 @@ to use vagrantafile you have to do the following :
 5. Run the following command to install the necessary Ansible roles for this profile: `$ ansible-galaxy install -r requirements.yml`
 
 then you can simply setup the server by typing `vagrant up`.
-![image](http://localhost:3000/d/7bltGJkmz/systems-docker-metrics?from=1521992304528&to=1521992604530&orgId=1)
