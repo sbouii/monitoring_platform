@@ -45,5 +45,5 @@ to use vagrantafile you have to do the following :
 
 then you can simply setup the server by typing `vagrant up`.
  
-**[Grafana Docker-host-containers Dasboard1](https://snapshot.raintank.io/dashboard/snapshot/5ehLoYGgNfEuI8f0FW0JoGm9cKlWNQ3h) **
-**[Grafana Docker-host-containers Dasboard2](https://snapshot.raintank.io/dashboard/snapshot/YSWFNGAsBRi2rYuO4ok1CCXbTG5mFyzk) **
+- **[Grafana Docker-host-containers Dasboard1](https://snapshot.raintank.io/dashboard/snapshot/5ehLoYGgNfEuI8f0FW0JoGm9cKlWNQ3h)**
+- **[Grafana Docker-host-containers Dasboard2](https://snapshot.raintank.io/dashboard/snapshot/YSWFNGAsBRi2rYuO4ok1CCXbTG5mFyzk)**
